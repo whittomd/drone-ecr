@@ -13,4 +13,4 @@ RUN \
 
 ADD bin/wrap-drone-docker.sh /bin/wrap-drone-docker.sh
 
-ENTRYPOINT /bin/wrap-drone-docker.sh
+ENTRYPOINT ["/usr/local/bin/dockerd-entrypoint.sh", "/bin/wrap-drone-docker.sh"]
