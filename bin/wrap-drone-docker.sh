@@ -27,12 +27,13 @@ aws_auth=$(aws ecr get-authorization-token --output text ${REGISTRY_IDS:-''})
 
 # map some ecr specific variable names to their docker equivalents
 export DOCKER_USERNAME=AWS
-export DOCKER_PASSWORD=$(echo $aws_auth | cut -d ' ' -f2 | base64 -d | cut -d: -f2)
+export DOCKER_PASSWORD=$(echo $aws_auth | cut -d ' ' -f2 | base64 -d -w 0 | cut -d: -f2)
 #export PLUGIN_REGISTRY=$(echo $aws_auth | cut -d ' ' -f4)
 
 #echo "DOCKER_USERNAME: $DOCKER_USERNAME"
 #echo "DOCKER_PASSWORD: $DOCKER_PASSWORD"
 #echo "DOCKER_REGISTRY: $DOCKER_REGISTRY"
+echo "$DOCKER_PASSWORD"
 echo "PLUGIN_REGISTRY: $PLUGIN_REGISTRY"
 echo "PLUGIN_REPO: $PLUGIN_REPO"
 # invoke the docker plugin
