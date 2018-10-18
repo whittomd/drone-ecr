@@ -2,7 +2,7 @@
 #
 #     docker build --rm=true -t plugins/ecr .
 
-FROM plugins/docker:latest
+FROM plugins/docker:17.12
 
 RUN \
 	mkdir -p /aws && \

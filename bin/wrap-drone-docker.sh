@@ -8,7 +8,7 @@
 [ -n "$ECR_SECRET_KEY" ] && export PLUGIN_SECRET_KEY=${ECR_SECRET_KEY}
 [ -n "$ECR_CREATE_REPOSITORY" ] && export PLUGIN_SECRET_KEY=${PLUGIN_CREATE_REPOSITORY}
 [ -n "$ECR_REGISTRY_IDS" ] && export PLUGIN_REGISTRY_IDS=${ECR_REGISTRY_IDS}
-
+[ -n "$ECR_REPO" ] && export PLUGIN_REPO=${ECR_REPO}
 # set the region
 export AWS_DEFAULT_REGION=${PLUGIN_REGION:-'us-east-1'}
 
@@ -26,7 +26,7 @@ aws_auth=$(aws ecr get-authorization-token --output text ${REGISTRY_IDS:-''})
 # map some ecr specific variable names to their docker equivalents
 export DOCKER_USERNAME=AWS
 export DOCKER_PASSWORD=$(echo $aws_auth | cut -d ' ' -f2 | base64 -d | cut -d: -f2)
-export DOCKER_REGISTRY=$(echo $aws_auth | cut -d ' ' -f4)
+export PLUGIN_REGISTRY=$(echo $aws_auth | cut -d ' ' -f4)
 
 #echo "DOCKER_USERNAME: $DOCKER_USERNAME"
 #echo "DOCKER_PASSWORD: $DOCKER_PASSWORD"
