@@ -12,5 +12,5 @@ RUN \
 	rm /var/cache/apk/*
 
 ADD bin/wrap-drone-docker.sh /bin/wrap-drone-docker.sh
-
+ADD bin/get-credentials.sh /bin/get-credentials.sh
 ENTRYPOINT ["/usr/local/bin/dockerd-entrypoint.sh", "/bin/wrap-drone-docker.sh"]
