@@ -33,6 +33,7 @@ export DOCKER_PASSWORD=$(echo $aws_auth | cut -d ' ' -f2 | base64 -d | cut -d: -
 #echo "DOCKER_USERNAME: $DOCKER_USERNAME"
 #echo "DOCKER_PASSWORD: $DOCKER_PASSWORD"
 #echo "DOCKER_REGISTRY: $DOCKER_REGISTRY"
-
+echo "PLUGIN_REGISTRY: $PLUGIN_REGISTRY"
+echo "PLUGIN_REPO: $PLUGIN_REPO"
 # invoke the docker plugin
 /bin/drone-docker "$@"
